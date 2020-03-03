@@ -1,0 +1,33 @@
+Setting up Master Image:
+
+	docker pull ubuntu
+	docker run -t -d ubuntu
+
+create another container with the same command
+
+use this to login:
+	docker exec -it <container name> /bin/bash
+
+rename the contianer to master and slave:
+
+	docker container rename a287a95975b2 slave
+
+create ssh login between both the containers :
+	https://support.dbvisit.com/hc/en-us/articles/360000370515-Setup-Passwordless-SSH-between-two-servers-
+
+be sure to install ssh servers as well:
+	apt install openssh-server
+	service ssh restart
+
+
+then do the below on both the machines:
+
+	cd /home
+	mkdir mpich2
+	wget http://www.mpich.org/static/downloads/3.3.1/mpich-3.3.1.tar.gz
+	
+follwo evrything here:
+	https://www.youtube.com/watch?v=vflPGqcXJkY&t=374s
+	dont forget to do python setup.py install in the part where the video says to do python setup.py build
+	
+	/home/mpi4py-3.0.2# mpiexec -f machinefile -n 4 demo/raiyantest1.py
