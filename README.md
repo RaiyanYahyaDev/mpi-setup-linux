@@ -1,0 +1,1 @@
+A series of steps needed to configure the MPI parallel programming setup on linux based machines.
